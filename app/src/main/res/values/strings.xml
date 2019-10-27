@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">EarthquakeReport</string>
+    <string name="san_francisco">San Francisco</string>
+    <string name="london">London</string>
+    <string name="tokyo">Tokyo</string>
+    <string name="mexico_city">Mexico City</string>
+    <string name="moscow">Moscow</string>
+    <string name="rio_de_janeiro">Rio de Janeiro</string>
+    <string name="paris">Paris</string>
+</resources>
