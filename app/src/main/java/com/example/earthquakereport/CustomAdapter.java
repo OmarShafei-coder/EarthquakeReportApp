@@ -35,8 +35,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
         Earthquake currentElement = data.get(position);
         holder.magnitude.setText(String.valueOf(currentElement.getMagnitude()));
-        holder.place.setText(String.valueOf(currentElement.getPlace()));
-        holder.time.setText(String.valueOf(currentElement.getTime()));
+        holder.place.setText(currentElement.getPlace());
+        holder.date.setText(currentElement.getDate());
     }
 
     @Override
@@ -47,14 +47,14 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     public class CustomViewHolder extends RecyclerView.ViewHolder {
         private TextView magnitude;
         private TextView place;
-        private TextView time;
+        private TextView date;
 
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
 
             magnitude = itemView.findViewById(R.id.magnitude);
             place = itemView.findViewById(R.id.location);
-            time = itemView.findViewById(R.id.date);
+            date = itemView.findViewById(R.id.date);
         }
     }
 }

@@ -4,7 +4,10 @@ import android.util.Log;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Helper methods related to requesting and receiving earthquake data from USGS.
@@ -65,9 +68,13 @@ public final class QueryUtils {
                 //Extract “place” for location
                 String place = properties.getString("place");
                 //Extract “time” for time
-                long time = properties.getLong("time");
-                //Create Earthquake java object from magnitude, location, and time
-                Earthquake earthquakeObject = new Earthquake(mag, place, time);
+                long timeInMilliseconds  = properties.getLong("time");
+                //Date Formatting
+                Date dateObject = new Date(timeInMilliseconds);
+                SimpleDateFormat dateFormatter = new SimpleDateFormat("MMM DD, yyyy");
+                String dateToDisplay = dateFormatter.format(dateObject);
+                //Create Earthquake java object from magnitude, location, and date
+                Earthquake earthquakeObject = new Earthquake(mag, place, dateToDisplay);
                 //Add earthquake to list of earthquakes
                 earthquakesList.add(earthquakeObject);
             }

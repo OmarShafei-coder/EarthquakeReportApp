@@ -12,7 +12,6 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private CustomAdapter adapter;
-    private ArrayList<Earthquake> earthquakes = QueryUtils.extractEarthquakes();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,9 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         recyclerView = findViewById(R.id.recycler_view);
-
-
-
+        ArrayList<Earthquake> earthquakes = QueryUtils.extractEarthquakes();
 
         adapter = new CustomAdapter(getApplicationContext(), earthquakes);
         recyclerView.setAdapter(adapter);

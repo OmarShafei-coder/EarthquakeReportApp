@@ -4,12 +4,12 @@ package com.example.earthquakereport;
 public class Earthquake {
     private double magnitude;
     private String place;
-    private long time;
+    private String date;
 
-    public Earthquake(double magnitude, String place, long time) {
+    public Earthquake(double magnitude, String place, String date) {
         this.magnitude = magnitude;
         this.place = place;
-        this.time = time;
+        this.date = date;
     }
 
     public double getMagnitude() {
@@ -28,11 +28,11 @@ public class Earthquake {
         this.place = place;
     }
 
-    public long getTime() {
-        return time;
+    public String getDate() {
+        return date;
     }
 
-    public void setTime(long time) {
-        this.time = time;
+    public void setDate(String date) {
+        this.date = date;
     }
 }
