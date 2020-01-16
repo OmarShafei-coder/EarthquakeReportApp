@@ -1,10 +1,32 @@
 <resources>
     <string name="app_name">EarthquakeReport</string>
-    <string name="san_francisco">San Francisco</string>
-    <string name="london">London</string>
-    <string name="tokyo">Tokyo</string>
-    <string name="mexico_city">Mexico City</string>
-    <string name="moscow">Moscow</string>
-    <string name="rio_de_janeiro">Rio de Janeiro</string>
-    <string name="paris">Paris</string>
+
+    <string name="san_francisco_mag">7.2</string>
+    <string name="san_francisco_location">San Francisco</string>
+    <string name="san_francisco_date">Feb 2, 2016</string>
+
+    <string name="london_mag">6.1</string>
+    <string name="london_location">London</string>
+    <string name="london_date">July 20, 2015</string>
+
+    <string name="tokyo_mag">3.9</string>
+    <string name="tokyo_location">Tokyo</string>
+    <string name="tokyo_date">Nov 10, 2014</string>
+
+    <string name="mexico_city_mag">5.4</string>
+    <string name="mexico_city_location">Mexico City</string>
+    <string name="mexico_city_date">May 3, 2014</string>
+
+    <string name="moscow_mag">2.8</string>
+    <string name="moscow_location">Moscow</string>
+    <string name="moscow_date">Jan 31, 2013</string>
+
+    <string name="rio_de_janeiro_mag">4.9</string>
+    <string name="rio_de_janeiro_location">Rio de Janeiro</string>
+    <string name="rio_de_janeiro_date">Aug 19, 2012</string>
+
+    <string name="paris_mag">1.6</string>
+    <string name="paris_location">Paris</string>
+    <string name="paris_date">Oct 30, 2011</string>
+
 </resources>

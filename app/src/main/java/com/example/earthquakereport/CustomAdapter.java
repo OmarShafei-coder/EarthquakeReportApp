@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,10 +14,10 @@ import java.util.ArrayList;
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomViewHolder>{
 
     private Context context;
-    private ArrayList<Module> data;
+    private ArrayList<Earthquake> data;
     private LayoutInflater layoutInflater;
 
-    public CustomAdapter(Context context, ArrayList<Module> data) {
+    public CustomAdapter(Context context, ArrayList<Earthquake> data) {
         this.context = context;
         this.data = data;
         layoutInflater = LayoutInflater.from(context);
@@ -34,8 +33,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
 
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
-        Module currentElement = data.get(position);
-        holder.location.setText(currentElement.getLocation());
+        Earthquake currentElement = data.get(position);
+        holder.magnitude.setText(String.valueOf(currentElement.getMagnitude()));
+        holder.place.setText(String.valueOf(currentElement.getPlace()));
+        holder.time.setText(String.valueOf(currentElement.getTime()));
     }
 
     @Override
@@ -44,12 +45,16 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     }
 
     public class CustomViewHolder extends RecyclerView.ViewHolder {
-        private TextView location;
+        private TextView magnitude;
+        private TextView place;
+        private TextView time;
 
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            location = itemView.findViewById(R.id.location);
+            magnitude = itemView.findViewById(R.id.magnitude);
+            place = itemView.findViewById(R.id.location);
+            time = itemView.findViewById(R.id.date);
         }
     }
 }
