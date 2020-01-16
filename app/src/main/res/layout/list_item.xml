@@ -4,40 +4,52 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/border"
     android:padding="16dp"
     android:weightSum="100"
     xmlns:tools="http://schemas.android.com/tools">
-
 
     <TextView
         android:id="@+id/magnitude"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="15"
+        android:layout_weight="20"
         android:gravity="center_vertical"
+        tools:text="1.6"
         android:textAppearance="?android:textAppearanceMedium"
-        android:textColor="#000"
-        tools:text="1.6" />
+        android:textColor="#000" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="40"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/location"
-            android:layout_width="0dp"
+            android:id="@+id/primary_location"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="35"
-            android:gravity="center_vertical"
-            tools:text="Paris"
+            tools:text="80KM SSE of"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="#83535151" />
+
+        <TextView
+            android:id="@+id/location_offset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Paris, France"
             android:textAppearance="?android:textAppearanceMedium"
             android:textColor="#000" />
 
-        <TextView
-            android:id="@+id/date"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="50"
-            android:textColor="#000"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:gravity="center"
-            tools:text="Oct 30, 2011"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="30"
+        android:textColor="#000"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:gravity="center"
+        tools:text="Oct 30, 2011"/>
 
 </LinearLayout>

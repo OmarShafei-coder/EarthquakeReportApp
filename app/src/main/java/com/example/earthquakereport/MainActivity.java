@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler_view);
         ArrayList<Earthquake> earthquakes = QueryUtils.extractEarthquakes();
 
+
         adapter = new CustomAdapter(getApplicationContext(), earthquakes);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));

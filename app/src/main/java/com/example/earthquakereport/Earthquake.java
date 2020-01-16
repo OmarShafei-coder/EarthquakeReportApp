@@ -3,12 +3,14 @@ package com.example.earthquakereport;
 //The module class
 public class Earthquake {
     private double magnitude;
-    private String place;
+    private String primaryLocation;
+    private String locationOffset;
     private String date;
 
-    public Earthquake(double magnitude, String place, String date) {
+    public Earthquake(double magnitude, String primaryLocation, String locationOffset, String date) {
         this.magnitude = magnitude;
-        this.place = place;
+        this.primaryLocation = primaryLocation;
+        this.locationOffset = locationOffset;
         this.date = date;
     }
 
@@ -20,12 +22,20 @@ public class Earthquake {
         this.magnitude = magnitude;
     }
 
-    public String getPlace() {
-        return place;
+    public String getPrimaryLocation() {
+        return primaryLocation;
     }
 
-    public void setPlace(String place) {
-        this.place = place;
+    public void setPrimaryLocation(String primaryLocation) {
+        this.primaryLocation = primaryLocation;
+    }
+
+    public String getLocationOffset() {
+        return locationOffset;
+    }
+
+    public void setLocationOffset(String locationOffset) {
+        this.locationOffset = locationOffset;
     }
 
     public String getDate() {
