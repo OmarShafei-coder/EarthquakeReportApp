@@ -1,55 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="16dp"
-    android:weightSum="100"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:orientation="horizontal"
+    android:layout_weight="100"
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/magnitude"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="20"
-        android:gravity="center_vertical"
-        tools:text="1.6"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:textColor="#000" />
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_weight="1"
+        android:background="@drawable/magnitude_circle"
+        android:gravity="center"
+        android:textAppearance="?android:textAppearanceListItem"
+        android:textColor="#000"
+        tools:text="1.6" />
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_weight="40"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_weight="80"
+        android:orientation="vertical"
+        android:paddingLeft="16dp">
 
         <TextView
             android:id="@+id/primary_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="80KM SSE of"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:textColor="#83535151" />
+            android:textAppearance="?android:textAppearanceListItem"
+            android:textColor="#83535151"
+            tools:text="80KM SSE of" />
 
         <TextView
             android:id="@+id/location_offset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Paris, France"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:textColor="#000" />
+            android:textAppearance="?android:textAppearanceListItem"
+            android:textColor="#000"
+            tools:text="Paris, France" />
 
     </LinearLayout>
 
     <TextView
         android:id="@+id/date"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="30"
-        android:textColor="#000"
-        android:textAppearance="?android:textAppearanceMedium"
+        android:layout_weight="20"
         android:gravity="center"
+        android:layout_marginStart="8dp"
+        android:textAppearance="?android:textAppearanceListItem"
+        android:textColor="#000"
         tools:text="Oct 30, 2011"/>
 
 </LinearLayout>

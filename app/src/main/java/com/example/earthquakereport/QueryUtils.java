@@ -1,5 +1,8 @@
 package com.example.earthquakereport;
 
+import android.content.Intent;
+import android.net.Uri;
+import android.util.JsonReader;
 import android.util.Log;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -69,8 +72,9 @@ public final class QueryUtils {
 
                 //Extract “place” for location
                 String place = properties.optString("place");
+                //splitting the location data into two strings
                 String[] location = {"0", "0"};
-                if(place.contains("of") == true){
+                if(place.contains("of")){
                     location = place.split("of");
                     location[0] += "of";
                 }else {
@@ -81,9 +85,7 @@ public final class QueryUtils {
                 //Extract “time” for time
                 long timeInMilliseconds  = properties.optLong("time");
                 //Date Formatting
-                Date dateObject = new Date(timeInMilliseconds);
-                SimpleDateFormat dateFormatter = new SimpleDateFormat("MMM DD, yyyy");
-                String dateToDisplay = dateFormatter.format(dateObject);
+               String dateToDisplay = dataFormatting(timeInMilliseconds);
                 //Create Earthquake java object from magnitude, location, and date
                 Earthquake earthquakeObject = new Earthquake(mag, location[0], location[1], dateToDisplay);
                 //Add earthquake to list of earthquakes
@@ -101,4 +103,10 @@ public final class QueryUtils {
         return earthquakesList;
     }
 
+    private static String dataFormatting(long timeInMilliseconds) {
+        Date dateObject = new Date(timeInMilliseconds);
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("MMM DD, yyyy");
+        String dateToDisplay = dateFormatter.format(dateObject);
+        return dateToDisplay;
+    }
 }
