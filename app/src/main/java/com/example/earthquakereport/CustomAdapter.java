@@ -18,6 +18,19 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     private Context context;
     private ArrayList<Earthquake> data;
     private LayoutInflater layoutInflater;
+    private OnItemClickListener mListener;
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mListener = listener;
+    }
+
+    @NonNull
+    @Override
+    public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = layoutInflater.inflate(R.layout.list_item, parent, false);
+        CustomViewHolder customViewHolder = new CustomViewHolder(view, mListener);
+        return customViewHolder;
+    }
 
     public CustomAdapter(Context context, ArrayList<Earthquake> data) {
         this.context = context;
@@ -25,12 +38,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
         layoutInflater = LayoutInflater.from(context);
     }
 
-    @NonNull
-    @Override
-    public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.list_item, parent, false);
-        CustomViewHolder customViewHolder = new CustomViewHolder(view);
-        return customViewHolder;
+    //perform onclick in recyclerView
+    public interface OnItemClickListener {
+        void onItemClick(int position);
     }
 
     @Override
@@ -62,15 +72,27 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
         private TextView primaryLocation;
         private TextView locationOffset;
         private TextView date;
-        GradientDrawable magnitudeCircle;
 
-        public CustomViewHolder(@NonNull View itemView) {
+        public CustomViewHolder(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
 
             magnitude = itemView.findViewById(R.id.magnitude);
             primaryLocation = itemView.findViewById(R.id.primary_location);
             locationOffset = itemView.findViewById(R.id.location_offset);
             date = itemView.findViewById(R.id.date);
+
+            //onCLick for recyclerView
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (listener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            listener.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
     private int getMagnitudeColor(double magnitude){

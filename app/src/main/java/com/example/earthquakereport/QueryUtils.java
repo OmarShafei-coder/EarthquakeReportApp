@@ -1,18 +1,13 @@
 package com.example.earthquakereport;
 
-import android.content.Intent;
-import android.net.Uri;
-import android.util.JsonReader;
+
 import android.util.Log;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-
 
 
 /**
@@ -37,12 +32,12 @@ public final class QueryUtils {
         // Create an empty ArrayList that we can start adding earthquakes to
         ArrayList<Earthquake> earthquakesList = new ArrayList<>();
 
-        // Try to parse the SAMPLE_JSON_RESPONSE. If there's a problem with the way the JSON
+        // Try to parse the sampleJsonResponse. If there's a problem with the way the JSON
         // is formatted, a JSONException exception object will be thrown.
         // Catch the exception so the app doesn't crash, and print the error message to the logs.
         try {
 
-            // TODO: Parse the response given by the SAMPLE_JSON_RESPONSE string and
+            // TODO: Parse the response given by the sampleJsonResponse string and
             // build up a list of Earthquake objects with the corresponding data.
 
             // Convert sampleJsonResponse String into a JSONObject
@@ -76,8 +71,10 @@ public final class QueryUtils {
                 long timeInMilliseconds  = properties.optLong("time");
                 //Date Formatting
                String dateToDisplay = dataFormatting(timeInMilliseconds);
+                //getting the URL
+                String url = properties.optString("url");
                 //Create Earthquake java object from magnitude, location, and date
-                Earthquake earthquakeObject = new Earthquake(mag, location[0], location[1], dateToDisplay);
+                Earthquake earthquakeObject = new Earthquake(mag, location[0], location[1], dateToDisplay, url);
                 //Add earthquake to list of earthquakes
                 earthquakesList.add(earthquakeObject);
             }

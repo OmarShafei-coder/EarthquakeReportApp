@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     String strJson;
     private RecyclerView recyclerView;
     private CustomAdapter adapter;
+    ArrayList<Earthquake> earthquakes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         //HTTP request
         OkHttpClient client = new OkHttpClient();
 
-        String url = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&eventtype=earthquake&orderby=time&minmag=6&limit=10";
+        String url = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2016-01-01&endtime=2016-01-31&minmag=6&limit=10";
 
         Request request = new Request.Builder()
                 .url(url)
@@ -54,19 +55,30 @@ public class MainActivity extends AppCompatActivity {
                     MainActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            ArrayList<Earthquake> earthquakes = QueryUtils.extractEarthquakes(strJson);
+                            earthquakes = QueryUtils.extractEarthquakes(strJson);
                             recyclerView = findViewById(R.id.recycler_view);
                             recyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(), LinearLayoutManager.VERTICAL));
 
                             adapter = new CustomAdapter(getApplicationContext(), earthquakes);
                             recyclerView.setAdapter(adapter);
                             recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+                            adapter.setOnItemClickListener(new CustomAdapter.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(int position) {
+
+                                    Uri webpage = Uri.parse(earthquakes.get(position).getUrl());
+                                    Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
+                                    if (webIntent.resolveActivity(getPackageManager()) != null) {
+                                        startActivity(webIntent);
+                                    }
+                                }
+                            });
                         }
                     });
                 }
             }
         });
-
 
 
     }
